@@ -9,7 +9,9 @@
 | encrypted_password | string | null: false               |
 | first_name         | string | null: false               |
 | last_name          | string | null: false               |
-| birthday           | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birthday           | date   | null: false               |
 
 ### Association
 
@@ -18,13 +20,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| name         | string     | null: false                    |
-| description  | text       | null: false                    |
-| price        | integer    | null: false                    |
-| category     | text       | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------  | ---------- | ------------------------------ |
+| name          | string     | null: false                    |
+| description   | text       | null: false                    |
+| price         | integer    | null: false                    |
+| category      | integer    | null: false, foreign_key: true |
+| condition     | integer    | null: false, foreign_key: true |
+| shipping_cost | integer    | null: false, foreign_key: true |
+| prefecture    | integer    | null: false, foreign_key: true |
+| shipping_days | integer    | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -36,12 +42,12 @@
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | user    | references | null: false, foreign_key: true |
-| items   | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 - has_one :payment
 
 ## payments テーブル
@@ -50,7 +56,7 @@
 | -------------- | ---------- | ------------------------------ |
 | order          | references | null: false, foreign_key: true |
 | post_code      | integer    | null: false                    |
-| prefectures    | string     | null: false                    |
+| prefectures    | integer    | null: false, foreign_key: true |
 | city           | string     | null: false                    |
 | street_address | string     | null: false                    |
 | building       | string     |                                |
@@ -58,4 +64,4 @@
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
