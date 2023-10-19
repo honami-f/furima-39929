@@ -16,5 +16,4 @@ class Item < ApplicationRecord
             numericality: { other_than: 1, message: "can't be blank" }
   validates :price, inclusion: { in: 300..9_999_999 }
   validates :price, numericality: { only_integer: true }
-
 end
