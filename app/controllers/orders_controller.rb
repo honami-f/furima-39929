@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :set_item, only: [:create, :index]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    if !user_signed_in? || current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.order != nil
       redirect_to root_path
+
     else
       @order_payment = OrderPayment.new
     end
