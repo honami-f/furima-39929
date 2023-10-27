@@ -1,12 +1,11 @@
 # capistranoのバージョンを記載。固定のバージョンを利用し続け、バージョン変更によるトラブルを防止する
 lock '3.18.0'
-'
 
 # Capistranoのログの表示に利用する
 set :application, 'furima_39929'
 
 # どのリポジトリからアプリをpullするかを指定する
-set :repo_url,  'git@github.com:honami_f/furima_39929.git'
+set :repo_url,  'git@github.com:honami-f/furima-39929.git'
 set :branch, 'main'
 
 # バージョンが変わっても共通で参照するディレクトリを指定
