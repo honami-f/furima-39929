@@ -10,6 +10,7 @@ RSpec.describe Item, type: :model do
       it '全ての項目の入力が存在すれば登録できる' do
         expect(@item).to be_valid
       end
+      
     end
     context '商品の出品ができない場合' do
       it '商品画像が空では登録できない' do
